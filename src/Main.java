@@ -4,7 +4,7 @@ import enums.NumberTypes;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-public class Main{
+public class Main {
     public static void main(String[] args) {
 
         Note note1 = new Note("text", LocalDate.now(), NoteTypes.IDEA, "New idea");

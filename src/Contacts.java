@@ -1,6 +1,8 @@
 import enums.NoteTypes;
 import enums.NumberTypes;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.time.LocalDate;
 
 public class Contacts extends AbstractNote{
@@ -39,5 +41,28 @@ public class Contacts extends AbstractNote{
 
     public void setNumberTypes(NumberTypes numberTypes) {
         this.numberTypes = numberTypes;
+    }
+
+    @Override
+    public String toString() {
+        return "Contacts{" +
+                "phoneNumber='" + phoneNumber + '\'' +
+                ", contactName='" + contactName + '\'' +
+                ", numberTypes=" + numberTypes +
+                '}';
+    }
+
+
+    @Override
+    public void createEntry(String fileName) {
+        try {
+            FileWriter fileWriter = new FileWriter(fileName,true);
+            fileWriter.write("              "+ getContactName() +"        "+getDate()+"\n");
+            fileWriter.write(this.getText()+"\n");
+            System.out.println("Запись сделана");
+            fileWriter.close();
+        }catch (IOException e){
+            System.out.println(e.getMessage());
+        }
     }
 }

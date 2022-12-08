@@ -1,5 +1,7 @@
 import enums.NoteTypes;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.time.LocalDate;
 
 public class Note extends AbstractNote{ //Заметка (Наследник -> Заметка)
@@ -16,5 +18,25 @@ public class Note extends AbstractNote{ //Заметка (Наследник -> 
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    @Override
+    public String toString() {
+        return "Note{" +
+                "title='" + title + '\'' +
+                '}';
+    }
+
+    @Override
+    public void createEntry(String fileName) {
+            try {
+                FileWriter fileWriter = new FileWriter(fileName,true);
+                fileWriter.write("              "+this.title+"        "+getDate()+"\n");
+                fileWriter.write(this.getText()+"\n");
+                System.out.println("Запись сделана");
+                fileWriter.close();
+            }catch (IOException e){
+                System.out.println(e.getMessage());
+            }
     }
 }

@@ -3,7 +3,7 @@ import enums.NumberTypes;
 
 import java.time.LocalDate;
 
-public abstract class AbstractNote { //Абстрактная Заметка - абстрактный класс
+public abstract class AbstractNote implements WritingToFile { //Абстрактная Заметка - абстрактный класс
 
     private String text;
     private LocalDate date;
